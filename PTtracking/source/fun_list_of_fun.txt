@@ -1,0 +1,15 @@
+disclaimer: not really a fun list of fun
+
+stuff to try to implement this weekend?
+
+programming (none of this is required it would just be useful and would be a good direction to go in for the time being!!):
+	1. interactive hotspot (collision i guess)
+	2. dialogue that happens if interactive spot is hit
+	4. dialogue with two choices that affect the answer
+	
+art:
+	1. rough animatic for walk animation
+	2. rough animatic for some sort of BG animation maybe a bird
+	3. NPC drawing 
+	4. object of some sort that is also interactive
+	5. more levels :3

@@ -14,6 +14,7 @@ import org.flixel.FlxState;
 import org.flixel.FlxText;
 import org.flixel.util.FlxMath;
 import org.flixel.util.FlxPoint;
+import org.flixel.util.FlxRandom;
 import org.flixel.util.FlxRect;
 
 class MenuState extends FlxState
@@ -22,6 +23,11 @@ class MenuState extends FlxState
 	private var player:FlxSprite;
 	private var collision:FlxTilemap;
 	private var mouseLocation:Int;
+	
+	private var x:Int;
+    private var y :Int;
+    private var x2:Int;
+    private var y2:Int;
 	
 	override public function create():Void
 	{
@@ -32,23 +38,28 @@ class MenuState extends FlxState
 		FlxG.mouse.show();
 		#end
 		
-		collision = new FlxTilemap();
-		collision.loadMap(Assets.getText("assets/collision.txt"), "assets/tiles.png",128,76);
-		add(collision);
-		
-		
 		background = new FlxSprite();
 		background.loadGraphic("assets/environment.png", false, false, 2048, 760);
 		FlxG.worldBounds = new FlxRect(0, 0, background.width, background.height);
 		add(background);
 		
-		
+		collision = new FlxTilemap();
+		collision.loadMap(Assets.getText("assets/collision.txt"), "assets/tiles.png", 4, 3);
+		add(collision);
 		
 		player = new FlxSprite();
 		player.loadGraphic("assets/player.png", true, true, 130, 282);
 		add(player);
+		player.width = 130;
+		player.height = 10;
 		player.x = 300;
-		player.y = 400;
+		player.y = 500;
+		player.offset.y = 272;
+		
+		x =  Std.random(320);
+		y = Std.random(240);
+		x2 = Std.random(320) + 320;
+		y2 = Std.random(240) + 240;
 		
 		
 		FlxG.camera.follow(player);
@@ -68,6 +79,9 @@ class MenuState extends FlxState
 		
 		FlxG.collide(collision, player);
 		
+		player.velocity.x = 0;
+		player.velocity.y = 0;
+		
 		if (FlxG.keys.LEFT) {
 			player.velocity.x = -200;
 		}
@@ -84,10 +98,10 @@ class MenuState extends FlxState
 		}
 		
 		//On mouse click
-		if (FlxG.mouse.pressed())
+		/*if (FlxG.mouse.pressed())
 		{
 			player.followPath(collision.findPath(new FlxPoint(player.x, player.y), FlxG.mouse.getScreenPosition()), 100);
-		}
+		}*/
 		
 		
 	}	
